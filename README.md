@@ -1,6 +1,10 @@
 *Psst — looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*
 
 ---
+# svelte-API
+
+A side project to discover API on Svelte.
+
 
 # svelte app
 
@@ -69,4 +73,3 @@ Then, from within your project folder:
 npm run build
 surge public
 ```
-# svelte-API
