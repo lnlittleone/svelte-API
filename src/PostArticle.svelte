@@ -11,7 +11,7 @@
             },
             body : JSON.stringify({
                 title,
-                body : article,
+                article,
             })
         });
         if(response.ok){
@@ -26,28 +26,85 @@
 
 <main class="post-article__main">
     <section class="form-wysiwyg">
-        <h2>{title}</h2>
-        <p>{article}</p>
+        <h2 class="wysiwyg--title text">{title}</h2>
+        <p class="wysiwyg--content text">{article}</p>
     </section>
 
     <section class="post-form">
         <form on:submit|preventDefault={postArticle}>
-            <label for="title">Titre</label>
+            <label for="title" class="text">Titre</label>
             <input id="title" bind:value="{title}"/>
 
-            <label for="article">Article</label>
+            <label for="article" class="text">Article</label>
             <textarea id="article" bind:value="{article}"></textarea>
 
-            <button>submit</button>
+            <button type="submit" class="button--submit text">submit</button>
         </form>
     </section>
 </main>
 
 <style>
+
+    .text {
+        font-family: Futura, sans-serif;
+    }
+
+    label {
+        padding-bottom: 0.2rem;
+    }
+
+    input {
+        border : solid 1px lightgray;
+        border-radius: 0.5rem;
+        width : 100%;
+    }
+
+    textarea {
+        border : solid 1px lightgray;
+        border-radius: 0.5rem;
+        width : 100%;
+        height: 400px;
+    }
+
     .post-article__main {
         display : flex;
         justify-content: space-evenly;
+        padding : 2rem;
     }
+
+    .post-form {
+        border : solid 3px #e0f0ef;
+        border-radius: 1rem;
+        padding : 1rem;
+        width : 50%;
+    }
+
+    form {
+        display : flex;
+        flex-direction: column;
+    }
+
+    .form-wysiwyg {
+        border : solid 3px #e0f0ef;
+        border-radius: 1rem;
+        width : 40%;
+        padding : 1rem;
+    }
+
+    .wysiwyg--title {
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .button--submit {
+        border : none;
+        border-radius : 0.5rem;
+        background: #72aaa7;
+        color : white;
+        text-transform: uppercase;
+    }
+
+
 
 </style>
 

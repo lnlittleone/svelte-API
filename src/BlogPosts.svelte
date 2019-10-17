@@ -1,4 +1,5 @@
 <script>
+    import {onMount} from "svelte"
 
     const url = "https://www.jsonstore.io/fc896abcb8b2e62999fc38366a964b3c33c0a708e0c61b9c8fde4120cb322be8";
 
@@ -6,12 +7,24 @@
 
     const getArticles = () => {
         fetch(url)
-                .then(response => response.json())
-                .then(data => {results = data.result; console.log(results)})
-                .catch(e => console.log(e))
-    }
+            .then(response => response.json())
+            .then(data => {results.push(data.result)})
+            .catch(e => console.log(e))
+    };
 
-    getArticles()
+    onMount(() => {
+        getArticles();
+        console.log(results)
+        }
+    )
+
+    /*    const getArticles = async () => {
+        const response = await fetch(url);
+        results = response.json();
+        console.log(results)
+    };*/
+
+
    /* const getUsers = async function(){
         try{
             let response = await fetch(url);
@@ -54,10 +67,15 @@ results = getUsers().then()*/
     .blog-post__main {
         display: flex;
         margin : 2rem 1rem;
+        border-radius: 1rem;
+        min-height :400px;
     }
 
     .sidebar {
         width : 30%;
+        border : solid 3px #e0f0ef;
+        border-radius: 1rem;
+        padding : 0.5rem;
     }
 
     .blog--posts{
